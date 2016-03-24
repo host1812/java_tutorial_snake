@@ -7,7 +7,7 @@ public class GameRunnerTest {
 
 	@Test
 	public void testSomething() {
-		Assert.assertEquals(2, 5);
+		Assert.assertEquals(2, 4);
 	}
 	
 }
