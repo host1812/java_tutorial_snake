@@ -22,7 +22,7 @@ public class Level {
 		
 		for (int i=0;i<width;i++) {
 			for (int j=0;j<height;j++) {
-				field[i][j] = new Point(j,i);
+				field[i][j] = new Point(i,j);
 			}
 		}
 	}
