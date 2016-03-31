@@ -11,13 +11,13 @@ public class FixedSizeQueue<E> extends LinkedList<E> {
 	
 	private int size = super.size(); 
 	
-	// Update the size when we call 'grow' on the snake
-	public void setNewSize(int size) {
-		this.size += size;
-	}
-	
 	public FixedSizeQueue(E e) { 
 		super.add(e);
+	}
+	
+	// Update the size when we call 'grow' on the snake
+	public void incrementSize(int size) {
+		this.size += size;
 	}
 	
 	@Override
