@@ -5,7 +5,9 @@ public class Level {
 	private Point[][] field;
 	private static final int MIN_SIZE = 10;
 	private static final int MAX_SIZE = 30;
-
+	private int width;
+	private int height;
+ 
 	public Level() {
 		initField();
 	}
@@ -15,8 +17,8 @@ public class Level {
 	}
 
 	public void initField() {
-		int width = (int)(MIN_SIZE + (MAX_SIZE - MIN_SIZE)*Math.random());
-		int height = (int)(MIN_SIZE + (MAX_SIZE - MIN_SIZE)*Math.random());
+		width = (int)(MIN_SIZE + (MAX_SIZE - MIN_SIZE)*Math.random());
+		height = (int)(MIN_SIZE + (MAX_SIZE - MIN_SIZE)*Math.random());
 		
 		field = new Point[width][height];
 		
@@ -25,6 +27,13 @@ public class Level {
 				field[i][j] = new Point(i,j);
 			}
 		}
+	}
+	
+	public boolean isWithinBoundaries(Point point) {
+		if (point.x <= width && point.y <= height) {
+			return true;
+		}
+		return false;
 	}
 	
 	
