@@ -37,31 +37,31 @@ public class Snake {
 		case UP:
 			if (isGoodMove(snake.getLast().nextUp())) {
 				snake.add(snake.getLast().nextUp());
-				break;
 			} else {
 				throw new LethalMoveException("Game Over");
 			}
+			break;
 		case RIGHT:
 			if (isGoodMove(snake.getLast().nextRight())) {
 				snake.add(snake.getLast().nextRight());
-				break;
 			} else {
 				throw new LethalMoveException("Game Over");
 			}
+			break;
 		case DOWN:
 			if (isGoodMove(snake.getLast().nextDown())) {
 				snake.add(snake.getLast().nextDown());
-				break;
 			} else {
 				throw new LethalMoveException("Game Over");
 			}
+			break;
 		case LEFT:
 			if (isGoodMove(snake.getLast().nextLeft())) {
 				snake.add(snake.getLast().nextLeft());
-				break;
 			} else {
 				throw new LethalMoveException("Game Over");
 			}
+			break;
 		}
 	}
 
