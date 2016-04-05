@@ -1,31 +1,48 @@
 package org.foo.training.snake.util;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
-public class FixedSizeQueue<E> extends LinkedList<E> {
-	
-	/**
-	 * Don't ask.. it appears LinkedList is serializable...
-	 */
-	private static final long serialVersionUID = 6681061903910663309L;
-	
-	private int size = super.size(); 
-	
-	public FixedSizeQueue(E e) { 
-		super.add(e);
+public class FixedSizeQueue<T> implements Iterable<T> {
+
+	LinkedList<T> queue;
+
+	private int maxSize;
+
+	public FixedSizeQueue(int maxSize) {
+		this.maxSize = maxSize;
+		queue = new LinkedList<T>();
 	}
-	
-	// Update the size when we call 'grow' on the snake
-	public void incrementSize(int size) {
-		this.size += size;
+
+	public Iterator<T> iterator() {
+		return queue.iterator();
 	}
-	
-	@Override
-	public boolean add(E e) {
-		if ( super.size() == this.size ) {
-			super.removeFirst();
+
+	public int getMaxSize() {
+		return maxSize;
+	}
+
+	// Update the size when we call 'grow' on the snake. Grow size can very
+	public void incrementSizeBy(int size) {
+		this.maxSize += size;
+	}
+
+	public boolean contains(T t) {
+		return queue.contains(t);
+	}
+
+	public void add(T t) {
+		if (queue.size() == getMaxSize()) {
+			queue.removeFirst();
 		}
-		super.add(e);
-		return true;
+		queue.add(t);
+	}
+
+	public T getFirst() {
+		return queue.getFirst();
+	}
+
+	public T getLast() {
+		return queue.getLast();
 	}
 }
