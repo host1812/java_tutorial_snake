@@ -13,8 +13,9 @@ public class Snake {
 	public Snake(int size, Level level) {
 		this.level = level;
 		snake = new FixedSizeQueue<Point>(size);
+		snake.add(tailDefault);
 		for (int i = 0; i < size - 1; i++) {
-			snake.add(tailDefault.nextRight());
+			snake.add(snake.getLast().nextRight());
 		}
 	}
 
