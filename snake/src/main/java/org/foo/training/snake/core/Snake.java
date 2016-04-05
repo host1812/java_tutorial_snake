@@ -5,8 +5,6 @@ import org.foo.training.snake.util.*;
 public class Snake {
 
 	private Point tailDefault = new Point(1, 1);
-	private boolean grow = false;
-	private int growSize = 0;
 
 	private Direction direction;
 	private FixedSizeQueue<Point> snake;
@@ -24,9 +22,8 @@ public class Snake {
 		return snake;
 	}
 
-	public void setGrow(int growSize, boolean grow) {
-		this.growSize = growSize;
-		this.grow = grow;
+	public void setGrow(int growSize) {
+		snake.incrementSizeBy(growSize);
 	}
 
 	public void setDirection(Direction direction) {
@@ -38,54 +35,33 @@ public class Snake {
 		switch (direction) {
 		case UP:
 			if (isGoodMove(snake.getLast().nextUp())) {
-				if (grow) {
-					snake.incrementSizeBy(growSize);
-					for (int i = 0; i <= growSize; i++) {
-						snake.add(snake.getLast().nextUp());
-					}
-				}
+				snake.add(snake.getLast().nextUp());
 				break;
 			} else {
 				throw new LethalMoveException("Game Over");
 			}
 		case RIGHT:
 			if (isGoodMove(snake.getLast().nextRight())) {
-				if (grow) {
-					snake.incrementSizeBy(growSize);
-					for (int i = 0; i <= growSize; i++) {
-						snake.add(snake.getLast().nextRight());
-					}
-				}
+				snake.add(snake.getLast().nextRight());
 				break;
 			} else {
 				throw new LethalMoveException("Game Over");
 			}
 		case DOWN:
 			if (isGoodMove(snake.getLast().nextDown())) {
-				if (grow) {
-					snake.incrementSizeBy(growSize);
-					for (int i = 0; i <= growSize; i++) {
-						snake.add(snake.getLast().nextDown());
-					}
-				}
+				snake.add(snake.getLast().nextDown());
 				break;
 			} else {
 				throw new LethalMoveException("Game Over");
 			}
 		case LEFT:
 			if (isGoodMove(snake.getLast().nextLeft())) {
-				if (grow) {
-					snake.incrementSizeBy(growSize);
-					for (int i = 0; i <= growSize; i++) {
-						snake.add(snake.getLast().nextLeft());
-					}
-				}
+				snake.add(snake.getLast().nextLeft());
 				break;
 			} else {
 				throw new LethalMoveException("Game Over");
 			}
 		}
-		setGrow(0, false);
 	}
 
 	private boolean isGoodMove(Point point) {
