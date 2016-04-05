@@ -8,4 +8,20 @@ public class Point {
 		this.x = x;
 		this.y = y;
 	}
+	
+	public Point nextRight() {
+		return new Point(x+1,y);
+	}
+	
+	public Point nextLeft() {
+		return new Point(x-1,y);
+	}
+	
+	public Point nextUp() {
+		return new Point(x,y+1);
+	}
+	
+	public Point nextDown() {
+		return new Point(x,y-1);
+	}
 }
