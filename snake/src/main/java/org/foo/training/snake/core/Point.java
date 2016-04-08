@@ -18,10 +18,21 @@ public class Point {
 	}
 	
 	public Point nextUp() {
-		return new Point(x,y+1);
+		return new Point(x,y-1);
 	}
 	
 	public Point nextDown() {
-		return new Point(x,y-1);
+		return new Point(x,y+1);
+	}
+	
+	public boolean equals(Object o) {
+		if (o == null) { return false; } 
+		if (!(o instanceof Point)) { return false; }
+		Point other = (Point) o;
+		return (this.x == other.x && this.y == other.y);	
+	}
+	
+	public int hasCode() {
+		return x + y;
 	}
 }

@@ -3,6 +3,7 @@ package org.foo.training.snake.core;
 public class Level {
 
 	private Point[][] field;
+	
 	private static final int MIN_SIZE = 10;
 	private static final int MAX_SIZE = 30;
 

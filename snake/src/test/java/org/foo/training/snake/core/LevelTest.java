@@ -34,4 +34,18 @@ public class LevelTest {
 			}
 		}	
 	}
+	
+	@Test
+	public void isWithinBoundariesWorks() {
+		Level level = new Level();
+		Point point1 = new Point(31,1);
+		Point point2 = new Point(1,31);
+		Point point3 = new Point(-1,-1);
+		Point point4 = new Point(5,6);
+		
+		assertFalse(level.isWithinBoundaries(point1));
+		assertFalse(level.isWithinBoundaries(point2));
+		assertFalse(level.isWithinBoundaries(point3));
+		assertTrue(level.isWithinBoundaries(point4));	
+	}
 }
