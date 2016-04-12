@@ -1,5 +1,9 @@
 package org.foo.training.snake.core;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.foo.training.snake.util.*;
 
 public class Snake {
@@ -18,9 +22,19 @@ public class Snake {
 			snake.add(snake.getLast().nextRight());
 		}
 	}
-
-	public FixedSizeQueue<Point> getSnake() {
-		return snake;
+	
+	protected Snake(Level level, FixedSizeQueue<Point> queue) {
+		this.level = level;
+		snake = queue;
+	}
+	
+	public List<Point> getSnake() {
+		List<Point> snakeOut = new ArrayList<Point>();
+		Iterator<Point> it = snake.iterator();
+		while(it.hasNext()) {
+			snakeOut.add(it.next());
+		}
+		return snakeOut;
 	}
 
 	public void setGrow(int growSize) {
