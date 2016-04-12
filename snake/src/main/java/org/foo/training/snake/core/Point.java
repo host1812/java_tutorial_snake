@@ -1,5 +1,7 @@
 package org.foo.training.snake.core;
 
+import java.util.Objects;
+
 public class Point {
 	public final int x;
 	public final int y;
@@ -25,14 +27,16 @@ public class Point {
 		return new Point(x,y+1);
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if (o == null) { return false; } 
-		if (!(o instanceof Point)) { return false; }
+		if (getClass() != o.getClass()) { return false; }
 		Point other = (Point) o;
 		return (this.x == other.x && this.y == other.y);	
 	}
 	
-	public int hasCode() {
-		return x + y;
+	@Override
+	public int hashCode() {
+		return Objects.hash(x,y);
 	}
 }

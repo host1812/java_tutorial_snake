@@ -23,6 +23,11 @@ public class Snake {
 		}
 	}
 	
+	protected Snake(Level level, FixedSizeQueue<Point> queue) {
+		this.level = level;
+		snake = queue;
+	}
+	
 	public List<Point> getSnake() {
 		List<Point> snakeOut = new ArrayList<Point>();
 		Iterator<Point> it = snake.iterator();

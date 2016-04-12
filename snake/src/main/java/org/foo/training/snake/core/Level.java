@@ -10,17 +10,24 @@ public class Level {
 	public Level() {
 		initField();
 	}
-
+	
+	protected Level(int width, int height) {
+		initField(width, height);
+	}
+	
 	public Point[][] getField() {
 		return field;
 	}
 
-	public void initField() {
+	private void initField() {
 		int width = (int) (MIN_SIZE + (MAX_SIZE - MIN_SIZE) * Math.random());
 		int height = (int) (MIN_SIZE + (MAX_SIZE - MIN_SIZE) * Math.random());
-
+		
+		initField(width, height);
+	}
+	
+	private void initField(int width, int height) {
 		field = new Point[width][height];
-
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
 				field[i][j] = new Point(i, j);
