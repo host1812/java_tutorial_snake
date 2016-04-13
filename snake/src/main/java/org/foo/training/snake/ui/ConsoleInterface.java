@@ -1,22 +1,37 @@
 package org.foo.training.snake.ui;
 
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.googlecode.lanterna.terminal.Terminal;
+
 import org.foo.training.snake.core.UserInterface;
 
 public class ConsoleInterface implements UserInterface {
 
-	public void testInterface() throws Exception {
-		
-		for( int i=0; i<50; i++ ) {
-			
-			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXX");
-			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-			Thread.sleep(200);
-			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXX");
-			Thread.sleep(500);
-			System.out.print("\033[H\033[2J");
-			
-		}
-		
-	}
+  @Override
+  public void testInterface() throws Exception {
+    
+    Terminal terminal = new DefaultTerminalFactory().createTerminal();
+    terminal.clearScreen();
 
+    for (int i = 0; i < 50; i++) {
+
+      terminal.setCursorVisible(false);
+      
+      KeyStroke ks = terminal.pollInput();
+      
+      terminal.setCursorPosition(0, i);
+      terminal.putCharacter('X');
+      if(ks != null) {
+        terminal.setCursorPosition(1, 0);
+        terminal.putCharacter(ks.getCharacter());
+      }
+      
+      Thread.sleep(500);
+      if(i%10 == 0) {
+        terminal.clearScreen();
+      }
+      //System.out.print("\033[H\033[2J");
+    }
+  }
 }

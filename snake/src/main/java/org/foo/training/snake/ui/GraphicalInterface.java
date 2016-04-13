@@ -4,9 +4,9 @@ import org.foo.training.snake.core.UserInterface;
 
 public class GraphicalInterface implements UserInterface {
 
-	public void testInterface() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
+  @Override
+  public void testInterface() throws Exception {
+    // TODO Auto-generated method stub
 
+  }
 }
