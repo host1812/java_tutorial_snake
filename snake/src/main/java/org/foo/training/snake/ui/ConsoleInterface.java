@@ -24,7 +24,26 @@ public class ConsoleInterface implements UserInterface {
       terminal.putCharacter('X');
       if(ks != null) {
         terminal.setCursorPosition(1, 0);
-        terminal.putCharacter(ks.getCharacter());
+        switch(ks.getKeyType()) {
+          case ArrowDown:
+            terminal.putCharacter('D');
+            break;
+
+          case ArrowUp:
+            terminal.putCharacter('U');
+            break;
+
+          case ArrowLeft:
+            terminal.putCharacter('L');
+            break;
+
+          case ArrowRight:
+            terminal.putCharacter('R');
+            break;
+
+          default:
+            break;
+        }
       }
       
       Thread.sleep(500);
