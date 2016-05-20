@@ -4,17 +4,20 @@ import org.foo.training.snake.util.Direction;
 import org.foo.training.snake.util.LethalMoveException;
 import org.junit.Test;
 import org.mockito.Mockito;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+
 import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 
 public class SnakeTest {
 	
 	@Test
 	public void createDefaultSnake() {
 		Level level = Mockito.mock(Level.class);
-		Snake snake = new Snake(3, level);
-		List<Point> result = snake.getSnake();
+		SnakeOld snakeOld = new SnakeOld(3, level);
+		List<Point> result = snakeOld.getSnake();
 		
 		assertTrue(1 == result.get(0).x && 1 == result.get(0).y);
 		assertTrue(2 == result.get(1).x && 1 == result.get(1).y);
@@ -27,11 +30,11 @@ public class SnakeTest {
 		when(
 				level.isWithinBoundaries(any(Point.class))
 			).thenReturn(true);
-		
-		Snake snake = new Snake(3, level);
-		snake.setDirection(Direction.RIGHT);
-		snake.move();
-		List<Point> result = snake.getSnake();
+
+		SnakeOld snakeOld = new SnakeOld(3, level);
+		snakeOld.setDirection(Direction.RIGHT);
+		snakeOld.move();
+		List<Point> result = snakeOld.getSnake();
 		
 		assertTrue(2 == result.get(0).x && 1 == result.get(0).y);
 		assertTrue(3 == result.get(1).x && 1 == result.get(1).y);
@@ -44,16 +47,16 @@ public class SnakeTest {
 		when(
 				level.isWithinBoundaries(any(Point.class))
 			).thenReturn(true);
-		
-		Snake snake = new Snake(3, level);
-		List<Point> result = snake.getSnake();
+
+		SnakeOld snakeOld = new SnakeOld(3, level);
+		List<Point> result = snakeOld.getSnake();
 		
 		assertTrue(result.size() == 3);
-		
-		snake.setDirection(Direction.RIGHT);
-		snake.setGrow(1);
-		snake.move();
-		result = snake.getSnake();
+
+		snakeOld.setDirection(Direction.RIGHT);
+		snakeOld.setGrow(1);
+		snakeOld.move();
+		result = snakeOld.getSnake();
 		
 		assertTrue(result.size() == 4);
 		assertTrue(1 == result.get(0).x && 1 == result.get(0).y);
@@ -68,10 +71,10 @@ public class SnakeTest {
 		when(
 				level.isWithinBoundaries(any(Point.class))
 			).thenReturn(false);
-		
-		Snake snake = new Snake(3, level);
-		snake.setDirection(Direction.RIGHT);
-		snake.move();
+
+		SnakeOld snakeOld = new SnakeOld(3, level);
+		snakeOld.setDirection(Direction.RIGHT);
+		snakeOld.move();
 	}
 	
 	@Test(expected = LethalMoveException.class)
@@ -80,36 +83,36 @@ public class SnakeTest {
 		when(
 				level.isWithinBoundaries(any(Point.class))
 			).thenReturn(true);
-		
-		Snake snake = new Snake(3, level);
-		snake.setGrow(2);
-		snake.setDirection(Direction.RIGHT);
-		snake.move();
-		snake.move();
-		
-		List<Point> result = snake.getSnake();
+
+		SnakeOld snakeOld = new SnakeOld(3, level);
+		snakeOld.setGrow(2);
+		snakeOld.setDirection(Direction.RIGHT);
+		snakeOld.move();
+		snakeOld.move();
+
+		List<Point> result = snakeOld.getSnake();
 		
 		assertTrue(1 == result.get(0).x && 1 == result.get(0).y);
 		assertTrue(5 == result.get(4).x && 1 == result.get(4).y);
-		
-		snake.setDirection(Direction.DOWN);
-		snake.move();
-		
-		result = snake.getSnake();
+
+		snakeOld.setDirection(Direction.DOWN);
+		snakeOld.move();
+
+		result = snakeOld.getSnake();
 		assertTrue(2 == result.get(0).x && 1 == result.get(0).y);
 		assertTrue(5 == result.get(4).x && 2 == result.get(4).y);
-		
-		snake.setDirection(Direction.LEFT);
-		snake.move();
-		
-		result = snake.getSnake();
+
+		snakeOld.setDirection(Direction.LEFT);
+		snakeOld.move();
+
+		result = snakeOld.getSnake();
 		assertTrue(3 == result.get(0).x && 1 == result.get(0).y);
 		assertTrue(4 == result.get(4).x && 2 == result.get(4).y);
-		
-		snake.setDirection(Direction.UP);
-		snake.move();
-		
-		result = snake.getSnake();
+
+		snakeOld.setDirection(Direction.UP);
+		snakeOld.move();
+
+		result = snakeOld.getSnake();
 	}
 	
 }

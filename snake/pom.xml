@@ -1,8 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.foo</groupId>
-  <artifactId>snake</artifactId>
+  <artifactId>snakeOld</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <!-- One-Jar is in the googlecode repository -->
@@ -44,7 +44,7 @@
     <plugins>
       <!-- Includes the runtime dependencies -->
       <plugin>
-        <groupId>org.dstovall</groupId>
+        <groupId>com.jolira</groupId>
         <artifactId>onejar-maven-plugin</artifactId>
         <version>1.4.4</version>
         <executions>
@@ -71,7 +71,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>org.foo.training.snake.GameRunner</mainClass>
+              <mainClass>org.foo.training.snakeOld.GameRunner</mainClass>
             </manifest>
           </archive>
         </configuration>
